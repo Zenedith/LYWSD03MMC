@@ -1,2 +1,0 @@
-prometheus_client==0.7.*
-bluepy==1.3.*
