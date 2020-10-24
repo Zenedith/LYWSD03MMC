@@ -11,6 +11,7 @@ RUN /usr/local/bin/pip3.7 install bluepy && /usr/local/bin/pip3.7 install reques
 COPY LYWSD03MMC.py LYWSD03MMC.py
 COPY sendToMQTT.sh sendToMQTT.sh
 
+ENV COUNT=1
 ENV DEVICE_MAC=A4:C1:38:A3:70:35
 ENV DEVICE_NAME=a4c138a37035
 ENV UNREACHABLE_COUNT=10
@@ -21,6 +22,6 @@ ENV MQTT_PASSWD=mqtt.passwd
 ENV MQTT_TOPIC_PREFIX=MiTemperature2
 
 #Change to the following line to match your needs
-ENTRYPOINT /usr/local/bin/python3.7m LYWSD03MMC.py -d $DEVICE_MAC -n $DEVICE_NAME --unreachable-count $UNREACHABLE_COUNT -r -deb -b 100 --skipidentical $SKIP_IDENTICAL --callback sendToMQTT.sh
+ENTRYPOINT /usr/local/bin/python3.7m LYWSD03MMC.py -d $DEVICE_MAC -n $DEVICE_NAME --count $COUNT --unreachable-count $UNREACHABLE_COUNT -r -deb -b 100 --skipidentical $SKIP_IDENTICAL --callback sendToMQTT.sh
 
 # start the created image with sudo docker run --net=host -t your_image_name /bin/bash

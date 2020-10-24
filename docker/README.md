@@ -12,6 +12,7 @@ docker run -it \
     --cap-add=NET_RAW \
     --net=host \
     --name=mitemperature2 \
+    -e COUNT=1 \
     -e DEVICE_MAC=A4:C1:38:A3:70:35 \
     -e DEVICE_NAME=a4c138a37035 \
     -e UNREACHABLE_COUNT=10 \
